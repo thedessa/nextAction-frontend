@@ -1,5 +1,5 @@
 import React from "react"
-import { fakeAuth } from "../../Utils/fakeAuth"
+import { fakeAuth } from "../../utils/FakeAuth"
 import { useNavigate } from "react-router-dom"
 
 const Dashboard = ({ x }) => {

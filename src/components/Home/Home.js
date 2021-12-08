@@ -1,5 +1,5 @@
 import React from "react";
-import HeaderHome from "./HeaderHome/HeaderHome";
+import HeaderHome from "../HeaderHome/HeaderHome";
 import "./Home.css";
 
 export default function Home() {

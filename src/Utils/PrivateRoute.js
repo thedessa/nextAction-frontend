@@ -1,6 +1,6 @@
 import React from "react"
 import { Navigate, useLocation } from "react-router-dom"
-import { fakeAuth } from "./fakeAuth"
+import { fakeAuth } from "./FakeAuth"
 
 /**
  * A wrapper around the element which checks if the user is authenticated
