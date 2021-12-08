@@ -1,35 +1,54 @@
-import React from "react";
-import { Col, Container, Row, Form, Button } from "react-bootstrap";
+import React from "react"
+import { useLocation, useNavigate } from "react-router-dom"
+import { fakeAuth } from "../Utils/fakeAuth"
+import HeaderHome from "./HeaderHome/HeaderHome"
+import {Button, Col, Container, Form, Row} from "react-bootstrap";
 import './Login.css'
 
-export default function Home() {
+function Login() {
+  let navigate = useNavigate()
+  let location = useLocation()
+
+  //let { from } = location.state || { from: { pathname: "/" } }
+  let login = () => {
+    fakeAuth.login(() => {
+      navigate("/dashboard")
+    })
+  }
+
   return (
     <div>
-      <Container>
-        <h1 className="login-text shadow-sm mt-5 p-3 text-center rounded"> Login </h1>
-        <Row classNmae="mt-5">
-          <Col lg={5} md={6} sm={12} className="p-5 m-auto shadow-sm roudend-lg">
-            <Form>
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>E-mail address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" />
-              </Form.Group>
+      <div>
+        <HeaderHome/>
+      
+        <Container>
+                <h1 className="login-text mt-10 p-3 text-center">Login to Next Action</h1>
+                <Row className="mt-1">
+                    <Col lg={5} md={6} sm={12} className="p-5 m-auto shadow-sm rounded-lg">
+                        <Form>
+                            <Form.Group className="mt-1" controlId="formBasicEmail">
+                                <Form.Label>Email address</Form.Label>
+                                <Form.Control type="email" placeholder="Enter email" />
+                            </Form.Group>
 
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" />
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="Check me out" />
-              </Form.Group>
-              <Button variant="success w-100" type="submit">
-                Submit
-              </Button>
-            </Form>
+                            <Form.Group className="mt-3"controlId="formBasicPassword">
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control type="password" placeholder="Password" />
+                            </Form.Group>
+                            <br/>
+            
+                            <Button variant="light w-100" size="lg" type="submit" onClick={login}>
+                                Login
+                            </Button>
+                        </Form>
+                    </Col>
+                </Row>
+            </Container>
 
-          </Col>
-        </Row>
-      </Container>
+
+      </div>
     </div>
-  );
+  )
 }
+
+export default Login

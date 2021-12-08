@@ -2,3 +2,9 @@
     color: #00CED1;
     font-family: 'Fuzzy Bubbles', cursive;
 }
+
+.login-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
