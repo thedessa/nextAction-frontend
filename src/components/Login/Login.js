@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { fakeAuth } from "../../utils/FakeAuth";
+import { fakeAuth } from "../../Utils/fakeAuth";
 import HeaderHome from "../HeaderHome/HeaderHome";
 import './Login.css';
 
