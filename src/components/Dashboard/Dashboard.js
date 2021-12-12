@@ -11,7 +11,7 @@ import "./Dashboard.css";
 
 const Dashboard = ({ x }) => {
   // const navigate = useNavigate()
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState();
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -27,7 +27,7 @@ const Dashboard = ({ x }) => {
     //setTodos(todos => [newTask, ...todos])
 
     setTodos([...todos, newTask])
-    console.log(newTask);
+    setInput();
   }
 
   const handleChange = e => {
@@ -57,7 +57,7 @@ const Dashboard = ({ x }) => {
     <div>
       <HeaderDashboard />
 
-      <Container className="box">
+      <Container className="box p-2">
         <Form onSubmit={handleSubmit}>
           <Row className="align-items-center">
             <Col xs="10">
@@ -72,7 +72,7 @@ const Dashboard = ({ x }) => {
             </Col>
 
             <Col xs="auto">
-              <Button type="submit" className="mb-2">
+              <Button type="submit" className="mb-2" disabled={!input}>
                 Submit
               </Button>
             </Col>
