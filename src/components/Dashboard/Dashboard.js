@@ -37,7 +37,7 @@ const Dashboard = ({ x }) => {
   const [todos, setTodos] = useState(null);
 
   const onUpdateTodo = (todo) => {
-    const todoItemIndex = todos.findIndex((x) => x.id == todo.id);
+    const todoItemIndex = todos.findIndex((x) => x.id === todo.id);
     const newTodos = [...todos];
 
     const newTodo = newTodos[todoItemIndex];

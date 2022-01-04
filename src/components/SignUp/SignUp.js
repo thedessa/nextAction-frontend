@@ -1,10 +1,10 @@
-import {React, useState} from "react";
+import { React, useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import api from "../../Utils/api.js";
+import { login as authLogin } from "../../Utils/auth";
 import HeaderHome from "../HeaderHome/HeaderHome";
 import './SignUp.css';
-import api from "../../Utils/api.js";
-import { useNavigate } from "react-router-dom";
-import { auth } from "../../Utils/auth";
 
 export default function SignUp() {
 
@@ -18,14 +18,13 @@ export default function SignUp() {
   const onSubmit = e => {
     try {
       let x = api.post("/jwt/register/" + signUp.email + "/" + signUp.password);
-      auth.login(() => {
-        navigate("/dashboard")
-      })
+      authLogin(x.data);
+      navigate("/dashboard");
     } catch (err) {
       console.log(err);
       alert("Could not register account.")
     }
-    
+
   };
 
   return (
@@ -40,15 +39,15 @@ export default function SignUp() {
                 <Form.Group className="mt-1" controlId="formBasicEmail">
                   <Form.Label>Email address</Form.Label>
                   <Form.Control type="email" placeholder="Enter email"
-                  value={signUp.email}
-                  onChange={e => setSignup({ ...signUp, email: e.target.value })}/>
+                    value={signUp.email}
+                    onChange={e => setSignup({ ...signUp, email: e.target.value })} />
                 </Form.Group>
 
                 <Form.Group className="mt-1" controlId="formBasicPassword">
                   <Form.Label>Password</Form.Label>
                   <Form.Control type="password" placeholder="Password"
-                  value={signUp.password}
-                  onChange={e => setSignup({ ...signUp, password: e.target.value })} />
+                    value={signUp.password}
+                    onChange={e => setSignup({ ...signUp, password: e.target.value })} />
                 </Form.Group>
                 <br />
 

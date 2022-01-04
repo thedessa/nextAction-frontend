@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../Utils/api.js";
-import { auth } from "../../Utils/auth";
+import { login as authLogin } from "../../Utils/auth";
 import HeaderHome from "../HeaderHome/HeaderHome";
 import './Login.css';
 
@@ -14,30 +14,17 @@ function Login() {
     password: ""
   });
 
-  //let { from } = location.state || { from: { pathname: "/" } }
-  // let onlogin = () => {
-  //   try {
-  //     let x = api.get("/jwt/gen/" + login.email + "/" + login.password);
-  //     auth.login(() => {
-  //       navigate("/dashboard")
-  //     })
-  //   } catch (err) {
-  //     console.log(err);
-  //     alert("Could not login to account.")
-  //   }
-  // }
+  const onLogin = e => {
+    try {
+      let x = api.get("/jwt/gen/" + login.email + "/" + login.password);
+      authLogin(x.data);
+      navigate("/dashboard");
+    } catch (err) {
+      console.log(err);
+      alert("Could not login to account.")
+    }
 
-  let onLogin = () => {
-    api.get("/jwt/gen/" + login.email + "/" + login.password).then(
-      (response) => {
-        auth.login(() => {
-          navigate("/dashboard")
-        })
-      }, () => {
-        alert("Could not login to account.")
-      }
-    );
-  }
+  };
 
   return (
     <div>
