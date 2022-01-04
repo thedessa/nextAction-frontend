@@ -18,8 +18,8 @@ export default function HeaderDashboard() {
                         <LinkContainer to="/inbox">
                             <Nav.Link>Inbox</Nav.Link>
                         </LinkContainer>
-                        <LinkContainer to="/contexts">
-                            <Nav.Link>Contexts</Nav.Link>
+                        <LinkContainer to="/logout">
+                            <Nav.Link>Logout</Nav.Link>
                         </LinkContainer>
                     </Nav>
                 </Navbar.Collapse>
