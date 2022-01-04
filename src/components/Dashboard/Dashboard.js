@@ -42,6 +42,7 @@ const Dashboard = () => {
       "title": input
     };
 
+    // Directly using request because of trouble using api :/
     await fetch("http://127.0.0.1:8080/jwt/add/1/" + newTask.title, {
       method: "post",
       headers: {
@@ -51,7 +52,7 @@ const Dashboard = () => {
 
     await getTodos();
     setTodos([...todos, newTask])
-    setInput();
+    setInput("");
 
   }
 
