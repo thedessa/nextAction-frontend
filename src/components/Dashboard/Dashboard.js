@@ -6,6 +6,7 @@ import HeaderDashboard from '../HeaderDashboard/HeaderDashboard';
 import Loading from "../Loading/Loading";
 import TodoList from '../TodoList/TodoList';
 import "./Dashboard.css";
+import api from "../../Utils/api"
 
 
 
@@ -47,7 +48,8 @@ const Dashboard = ({ x }) => {
   };
 
   useEffect(() => {
-    axios.get("https://jsonplaceholder.typicode.com/todos")
+    const token = localStorage.getItem("@nextAction-Token");
+    api.get("/jwt/list", {headers: {'Authorization': `Bearer ${token}` }})
       .then((result) => {
         setTodos(result.data.slice(0, 5))
       });
