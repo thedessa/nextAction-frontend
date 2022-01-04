@@ -15,17 +15,16 @@ export default function SignUp() {
     password: ""
   });
 
-  const onSubmit = e => {
+  const onSignup = e => {
     try {
       let x = api.post("/jwt/register/" + signUp.email + "/" + signUp.password);
       x.then((result) => authLogin(result.data));
       navigate("/dashboard");
     } catch (err) {
       console.log(err);
-      alert("Could not register account.")
+      alert("Could not register.")
     }
-
-  }
+  };
 
   return (
     <div>
@@ -35,7 +34,7 @@ export default function SignUp() {
           <h1 className="login-text mt-10 p-3 text-center">Register to Next Action</h1>
           <Row className="mt-1">
             <Col lg={5} md={6} sm={12} className="p-5 m-auto shadow-sm rounded-lg">
-              <Form onSubmit={onSubmit}>
+              <Form onSubmit={onSignup}>
                 <Form.Group className="mt-1" controlId="formBasicEmail">
                   <Form.Label>Email address</Form.Label>
                   <Form.Control type="email" placeholder="Enter email"
