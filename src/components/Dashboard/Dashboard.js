@@ -35,6 +35,18 @@ const Dashboard = () => {
     setTodos(newTodos);
   };
 
+  const onDeleteTodo = async (todo) => {
+    // Directly using request because of trouble using api :/
+    await fetch("http://127.0.0.1:8080/secured/delete/" + todo.taskId, {
+      method: "post",
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+
+    await getTodos();
+  }
+
   const handleCreate = async event => {
     event.preventDefault();
 
@@ -93,7 +105,7 @@ const Dashboard = () => {
         </Form>
       </Container>
 
-      {todos ? <TodoList todos={todos} onUpdateTodo={onUpdateTodo} /> : <Loading />}
+      {todos ? <TodoList todos={todos} onUpdateTodo={onUpdateTodo} onDeleteTodo={onDeleteTodo} /> : <Loading />}
     </div>
   )
 }
