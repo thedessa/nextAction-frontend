@@ -15,9 +15,6 @@ export default function HeaderDashboard() {
                 <Navbar.Toggle />
                 <Navbar.Collapse className="justify-content-end">
                     <Nav activeKey={window.location.pathname}>
-                        <LinkContainer to="/inbox">
-                            <Nav.Link>Inbox</Nav.Link>
-                        </LinkContainer>
                         <LinkContainer to="/logout">
                             <Nav.Link>Logout</Nav.Link>
                         </LinkContainer>

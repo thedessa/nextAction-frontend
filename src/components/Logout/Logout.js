@@ -14,7 +14,7 @@ function Logout() {
     return (
         <div>
             <Row className="mt-1">
-                <p> Tem certeza que deseja fazer o logout?</p>
+                <p> Sure you want to logout?</p>
                 <Button onClick={onLogout}>
                     Logout
                 </Button>
