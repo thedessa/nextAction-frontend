@@ -7,7 +7,8 @@ const TodoList = ({ todos, onUpdateTodo }) => {
             <ul className="list-group p-5">
                 {todos.map((todo) =>
                     <li className="list-group-item d-flex justify-content-between align-items-center">
-                        {todo.title}
+                        <div style={{ textDecoration: todo.completed ? "line-through" : "none" }}>
+                            {todo.title} </div>
                         <input type="checkbox" checked={todo.completed} onChange={() => onUpdateTodo(todo)}></input>
                     </li>
                 )}
