@@ -21,9 +21,8 @@ function Login() {
       navigate("/dashboard");
     } catch (err) {
       console.log(err);
-      alert("Could not login to account.")
+      alert("Could not login.")
     }
-
   };
 
   return (

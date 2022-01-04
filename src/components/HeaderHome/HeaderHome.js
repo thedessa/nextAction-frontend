@@ -16,7 +16,7 @@ export default function HeaderHome() {
                 <Navbar.Collapse className="justify-content-end">
                     <Nav activeKey={window.location.pathname}>
                         <LinkContainer to="/signup">
-                            <Nav.Link>Signup</Nav.Link>
+                            <Nav.Link>Sign Up</Nav.Link>
                         </LinkContainer>
                         <LinkContainer to="/login">
                             <Nav.Link>Login</Nav.Link>
