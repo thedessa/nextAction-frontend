@@ -18,14 +18,14 @@ export default function SignUp() {
   const onSubmit = e => {
     try {
       let x = api.post("/jwt/register/" + signUp.email + "/" + signUp.password);
-      authLogin(x.data);
+      x.then((result) => authLogin(result.data));
       navigate("/dashboard");
     } catch (err) {
       console.log(err);
       alert("Could not register account.")
     }
 
-  };
+  }
 
   return (
     <div>
