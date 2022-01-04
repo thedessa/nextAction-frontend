@@ -17,7 +17,7 @@ export default function SignUp() {
 
   const onSignup = e => {
     try {
-      let x = api.post("/jwt/register/" + signUp.email + "/" + signUp.password);
+      let x = api.post("/secured/register/" + signUp.email + "/" + signUp.password);
       x.then((result) => authLogin(result.data));
       navigate("/dashboard");
     } catch (err) {

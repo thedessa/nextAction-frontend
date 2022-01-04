@@ -25,7 +25,7 @@ const Dashboard = () => {
     newTodo.completed = !newTodo.completed;
     newTodos[todoItemIndex] = newTodo;
 
-    await fetch("http://127.0.0.1:8080/jwt/complete/" + newTodo.taskId, {
+    await fetch("http://127.0.0.1:8080/secured/complete/" + newTodo.taskId, {
       method: "post",
       headers: {
         'Authorization': `Bearer ${token}`
@@ -43,7 +43,7 @@ const Dashboard = () => {
     };
 
     // Directly using request because of trouble using api :/
-    await fetch("http://127.0.0.1:8080/jwt/add/1/" + newTask.title, {
+    await fetch("http://127.0.0.1:8080/secured/add/1/" + newTask.title, {
       method: "post",
       headers: {
         'Authorization': `Bearer ${token}`
@@ -53,11 +53,10 @@ const Dashboard = () => {
     await getTodos();
     setTodos([...todos, newTask])
     setInput("");
-
   }
 
   const getTodos = async () => {
-    api.get("/jwt/list", { headers: { 'Authorization': `Bearer ${token}` } })
+    api.get("/secured/list", { headers: { 'Authorization': `Bearer ${token}` } })
       .then((result) => {
         setTodos(result.data)
       });

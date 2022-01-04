@@ -16,7 +16,7 @@ function Login() {
 
   const onLogin = e => {
     try {
-      let x = api.get("/jwt/gen/" + login.email + "/" + login.password);
+      let x = api.get("/secured/login/" + login.email + "/" + login.password);
       x.then((result) => authLogin(result.data));
       navigate("/dashboard");
     } catch (err) {
