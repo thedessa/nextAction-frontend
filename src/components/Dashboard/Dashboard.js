@@ -6,7 +6,8 @@ import HeaderDashboard from '../HeaderDashboard/HeaderDashboard';
 import Loading from "../Loading/Loading";
 import TodoList from '../TodoList/TodoList';
 import "./Dashboard.css";
-import api from "../../Utils/api"
+import api from "../../Utils/api";
+import { getToken } from "../../Utils/auth";
 
 
 
@@ -48,7 +49,8 @@ const Dashboard = ({ x }) => {
   };
 
   useEffect(() => {
-    const token = localStorage.getItem("@nextAction-Token");
+    //const token = localStorage.getItem("@nextAction-Token");
+    const token = getToken();
     api.get("/jwt/list", {headers: {'Authorization': `Bearer ${token}` }})
       .then((result) => {
         setTodos(result.data.slice(0, 5))
